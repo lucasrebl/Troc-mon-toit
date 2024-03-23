@@ -1,0 +1,9 @@
+# Ignorer les fichiers et dossiers suivants
+
+# Fichiers de configuration
+docker-compose.yaml
+Dockerfile
+.htaccess
+
+# Dossiers
+vendor/

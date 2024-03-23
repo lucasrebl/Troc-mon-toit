@@ -1,0 +1,621 @@
+{% extends "default.html.twig" %}
+
+{% block title %}dashboard
+{% endblock %}
+{% block stylesheets %}
+	<link href="/../public/css/dashboard.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+	<div class="button">
+		<button id="button">
+			<a href="/">home</a>
+		</button>
+		<form action="/" method="post" id="button2">
+			<input type="submit" name="logOut" value="Log Out">
+		</form>
+	</div>
+
+	<h3>chercher un logements par nom</h3>
+	<form action="/dashboard" method="post" id="formSearch">
+		<label for="nameLogements">chercher par nom:</label>
+		<input type="text" name="nameLogements" id="nameLogements">
+		<input type="submit" name="search" value="submit" id="submit2">
+	</form>
+
+	<h3>CRUD sur les logements</h3>
+	<div class="logements">
+		<div class="add">
+			<h4>ajouter un logements</h4>
+			<form action="/dashboard" method="post" id="formLogement" enctype="multipart/form-data">
+				<label for="add">price:</label>
+				<input type="text" name="price" id="add" required>
+
+				<label for="add">city:</label>
+				<input type="text" name="city" id="add" required>
+
+				<label for="add">name:</label>
+				<input type="text" name="name" id="add" required>
+
+				<label for="add">Image :</label>
+				<input type="file" name="image" id="add" required>
+
+				<input type="submit" name="submit" value="submit" id="submit2">
+			</form>
+		</div>
+
+		<div class="delete">
+			<h4>supprimer un logements</h4>
+			<form action="/dashboard" method="post" id="formLogement">
+				<label for="delete">name:</label>
+				<input type="text" name="nameDelete" id="delete" required>
+
+				<input type="submit" name="delete" value="delete" id="delete2">
+			</form>
+		</div>
+
+	</div>
+
+	<div class="logements">
+		<div class="update">
+			<h4>modifier le nom d'un logements</h4>
+			<form action="/dashboard" method="post" id="formLogement">
+				<label for="update">nameSelect:</label>
+				<input type="text" name="nameSelect" id="update" required>
+
+				<label for="update">nameUpdate:</label>
+				<input type="text" name="nameUpdate" id="update" required>
+
+				<input type="submit" name="update" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier le prix d'un logements</h4>
+			<form action="/dashboard" method="post" id="formLogement">
+				<label for="update">nameSelect:</label>
+				<input type="text" name="nameSelect" id="update" required>
+
+				<label for="update">price:</label>
+				<input type="text" name="priceUpdate" id="update" required>
+
+				<input type="submit" name="update2" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier la ville d'un logements</h4>
+			<form action="/dashboard" method="post" id="formLogement">
+				<label for="update">nameSelect:</label>
+				<input type="text" name="nameSelect" id="update" required>
+
+				<label for="update">city:</label>
+				<input type="text" name="cityUpdate" id="update" required>
+
+				<input type="submit" name="update3" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier l'image d'un logements</h4>
+			<form action="/dashboard" method="post" id="formLogement" enctype="multipart/form-data">
+				<label for="update">nameSelect:</label>
+				<input type="text" name="nameSelect" id="update" required>
+
+				<label for="update">image:</label>
+				<input type="file" name="imageUpdate" id="update" required>
+
+				<input type="submit" name="update4" value="update" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="logements">
+		<div class="read">
+			<h4>afficher tout les logements</h4>
+			{% for logements in logementsDetails %}
+				<div class="readLogements">
+					<p id="id">id:
+						{{logements.id}}</p>
+					<p id="price">prix:
+						{{logements.price}}</p>
+					<p id="city">ville:
+						{{logements.city}}</p>
+					<p id="name">nom:
+						{{logements.name}}</p>
+					<img id="image" src="data:image;base64,{{ logements.image }}" alt="Image">
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<h3>CRUD sur les equipements</h3>
+	<div class="equipements">
+		<div class="add">
+			<h4>ajouter un equipements</h4>
+			<form action="/dashboard" method="post" id="formEquipements">
+				<label for="add">nameEquipements:</label>
+				<input type="text" name="nameEquipements" id="add" required>
+
+				<input type="submit" name="submit5" value="submit" id="submit2">
+			</form>
+		</div>
+		<div class="delete">
+			<h4>supprimer un equipements</h4>
+			<form action="/dashboard" method="post" id="formEquipements">
+				<label for="delete">nameEquipements:</label>
+				<input type="text" name="nameEquipementsDelete" id="delete" required>
+
+				<input type="submit" name="delete2" value="delete" id="delete2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier un equipements</h4>
+			<form action="/dashboard" method="post" id="formEquipements">
+				<label for="update">nameEquipementsSelect:</label>
+				<input type="text" name="nameEquipementsSelect" id="update" required>
+
+				<label for="update">nameEquipementsUpdate:</label>
+				<input type="text" name="nameEquipementsUpdate" id="update" required>
+
+				<input type="submit" name="update5" value="update" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="equipements">
+		<div class="read2">
+			<h4>afficher tout les equipements</h4>
+			{% for equipements in equipementsDetails %}
+				<div class="readEquipements">
+					<p id="id">id:
+						{{equipements.id_equipements}}</p>
+					<p id="nameEquipements">nom de l'equipement:
+						{{equipements.nameEquipements}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<h3>CRUD sur les services</h3>
+	<div class="services">
+		<div class="add">
+			<h4>ajouter un services</h4>
+			<form action="/dashboard" method="post" id="formServices">
+				<label for="add">nameServices:</label>
+				<input type="text" name="nameServices" id="add" required>
+
+				<input type="submit" name="submit6" value="submit" id="submit2">
+			</form>
+		</div>
+		<div class="delete">
+			<h4>supprimer un services</h4>
+			<form action="/dashboard" method="post" id="formServices">
+				<label for="delete">nameServices:</label>
+				<input type="text" name="nameServicesDelete" id="delete" required>
+
+				<input type="submit" name="delete3" value="delete" id="delete2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier un services</h4>
+			<form action="/dashboard" method="post" id="formServices">
+				<label for="update">nameServicesSelect:</label>
+				<input type="text" name="nameServicesSelect" id="update" required>
+
+				<label for="update">nameServicesUpdate:</label>
+				<input type="text" name="nameServicesUpdate" id="update" required>
+
+				<input type="submit" name="update6" value="update" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="services">
+		<div class="read2">
+			<h4>afficher tout les services</h4>
+			{% for services in servicesDetails %}
+				<div class="readServices">
+					<p id="id">id:
+						{{services.id_services}}</p>
+					<p id="nameServices">nom du services:
+						{{services.nameServices}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<h3>CRUD sur les type de logements</h3>
+	<div class="logementsType">
+		<div class="add">
+			<h4>ajouter un type de logements</h4>
+			<form action="/dashboard" method="post" id="formLogementsType">
+				<label for="add">nameLogementsType:</label>
+				<input type="text" name="nameLogementsType" id="add" required>
+
+				<input type="submit" name="submit7" value="submit" id="submit2">
+			</form>
+		</div>
+		<div class="delete">
+			<h4>supprimer un type de logements</h4>
+			<form action="/dashboard" method="post" id="formLogementsType">
+				<label for="delete">nameLogementsType:</label>
+				<input type="text" name="nameLogementsTypeDelete" id="delete" required>
+
+				<input type="submit" name="delete4" value="delete" id="delete2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier un type de logements</h4>
+			<form action="/dashboard" method="post" id="formLogementsType">
+				<label for="update">nameLogementsTypeSelect:</label>
+				<input type="text" name="logementsTypeSelect" id="update" required>
+
+				<label for="update">nameLogementsTypeUpdate:</label>
+				<input type="text" name="logementsTypeUpdate" id="update" required>
+
+				<input type="submit" name="update7" value="update" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="logementsType">
+		<div class="read2">
+			<h4>afficher tout les type de logements</h4>
+			{% for logementsType in logementsTypeDetails %}
+				<div class="readLogementsType">
+					<p id="id">id:
+						{{logementsType.id_logementsType}}</p>
+					<p id="nameLogementsType">nom du type de logements:
+						{{logementsType.nameLogementsType}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+	<h3>CRUD sur les caractéristiques d'un logements</h3>
+	<div class="logementsFeatures">
+		<div class="add">
+			<h4>ajouter un equipements a un logements</h4>
+			<form action="/dashboard" method="post" id="formEquipements">
+				<label for="add">nameSelect:</label>
+				<input type="logementsNameSelect" name="logementsNameSelect" id="add" required>
+
+				<label for="add">equipements:</label>
+				<input type="text" name="addEquipementsToLogements" id="add" required>
+
+				<input type="submit" name="submit3" value="submit" id="submit2">
+			</form>
+		</div>
+		<div class="add">
+			<h4>ajouter un services a un logements</h4>
+			<form action="/dashboard" method="post" id="formServices">
+				<label for="add">nameSelect:</label>
+				<input type="text" name="logementsNameSelect" id="add" required>
+
+				<label for="add">services:</label>
+				<input type="text" name="addServicesToLogements" id="add" required>
+
+				<input type="submit" name="submit2" value="submit" id="submit2">
+			</form>
+		</div>
+		<div class="add">
+			<h4>ajouter un type de logements a un logements</h4>
+			<form action="/dashboard" method="post" id="formLogementsType">
+				<label for="add">nameSelect:</label>
+				<input type="text" name="logementsNameSelect" id="add" required>
+
+				<label for="add">logementType:</label>
+				<input type="text" name="addLogementTypeToLogements" id="add" required>
+
+				<input type="submit" name="submit4" value="submit" id="submit2">
+			</form>
+		</div>
+	</div>
+
+	<div class="logementsFeatures">
+		<div class="delete">
+			<h4>supprimer un equipements d'un logements</h4>
+			<form action="/dashboard" method="post" id="formEquipements">
+				<label for="delete">name Logements:</label>
+				<input type="text" name="nameLogements" id="delete" required>
+
+				<label for="delete">nameEquipements:</label>
+				<input type="text" name="nameEquipementsDeleteInLogements" id="delete" required>
+
+				<input type="submit" name="delete6" value="delete" id="delete2">
+			</form>
+		</div>
+		<div class="delete">
+			<h4>supprimer un services d'un logements</h4>
+			<form action="/dashboard" method="post" id="formServices">
+				<label for="delete">name Logements:</label>
+				<input type="text" name="nameLogements" id="delete" required>
+
+				<label for="delete">nameServices:</label>
+				<input type="text" name="nameServicesDeleteInLogements" id="delete" required>
+
+				<input type="submit" name="delete7" value="delete" id="delete2">
+			</form>
+		</div>
+		<div class="delete">
+			<h4>supprimer un type de logements a un logements</h4>
+			<form action="/dashboard" method="post" id="formLogementsType">
+				<label for="delete">name Logements:</label>
+				<input type="text" name="nameLogements" id="delete" required>
+
+				<label for="delete">nameLogementsType:</label>
+				<input type="text" name="nameLogementsTypeDeleteInLogements" id="delete" required>
+
+				<input type="submit" name="delete8" value="delete" id="delete2">
+			</form>
+		</div>
+	</div>
+
+	<div class="logementsFeatures">
+		<div class="update">
+			<h4>modifier un equipements d'un logements</h4>
+			<form action="/dashboard" method="post" id="formEquipements">
+				<label for="update">name Logements:</label>
+				<input type="text" name="nameLogements" id="update" required>
+
+				<label for="update">nameEquipementsSelect:</label>
+				<input type="text" name="nameEquipementsSelect" id="update" required>
+
+				<label for="update">nameEquipementsUpdate:</label>
+				<input type="text" name="nameEquipementsUpdateInLogements" id="update" required>
+
+				<input type="submit" name="update8" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier un services d'un logements</h4>
+			<form action="/dashboard" method="post" id="formServices">
+				<label for="update">name Logements:</label>
+				<input type="text" name="nameLogements" id="update" required>
+
+				<label for="update">nameServicesSelect:</label>
+				<input type="text" name="nameServicesSelect" id="update" required>
+
+				<label for="update">nameServicesUpdate:</label>
+				<input type="text" name="nameServicesUpdateInLogements" id="update" required>
+
+				<input type="submit" name="update9" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier un type de logements a un logements</h4>
+			<form action="/dashboard" method="post" id="formLogementsType">
+				<label for="update">name Logements:</label>
+				<input type="text" name="nameLogements" id="update" required>
+
+				<label for="update">nameLogementsTypeSelect:</label>
+				<input type="text" name="logementsTypeSelect" id="update" required>
+
+				<label for="update">nameLogementsTypeUpdate:</label>
+				<input type="text" name="logementsTypeUpdateInLogements" id="update" required>
+
+				<input type="submit" name="update10" value="update" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="logementsFeatures">
+		<div class="read2">
+			<h4>afficher tout les equipements d'un logements</h4>
+			{% for equipementsLogements in equipementsLogementsDetails %}
+				<div class="readEquipements">
+					<p id="id">id:
+						{{equipementsLogements.id}}</p>
+					<p id="idLogements">id logements:
+						{{equipementsLogements.id_logements}}</p>
+					<p id="idEquipements">id equipement:
+						{{equipementsLogements.id_equipements}}</p>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="read2">
+			<h4>afficher tout les services d'un logements</h4>
+			{% for servicesLogements in servicesLogementsDetails %}
+				<div class="readServices">
+					<p id="id">id:
+						{{servicesLogements.id}}</p>
+					<p id="idLogements">id logements:
+						{{servicesLogements.id_logements}}</p>
+					<p id="idServices">id services:
+						{{servicesLogements.id_services}}</p>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="read2">
+			<h4>afficher le type de logements d'un logements</h4>
+			{% for logementsTypeLogements in logementsTypeLogementsDetails %}
+				<div class="readLogementsType">
+					<p id="id">id:
+						{{logementsTypeLogements.id}}</p>
+					<p id="idLogements">id logements:
+						{{logementsTypeLogements.id_logements}}</p>
+					<p id="idLogementsType">id logements type:
+						{{logementsTypeLogements.id_logementsType}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<h3>CRUD sur les utilisateurs</h3>
+	<div class="user">
+		<div class="add">
+			<h4>ajouter un utilisateurs</h4>
+			<button id="button">
+				<a href="/register">add user</a>
+			</button>
+		</div>
+		<div class="delete">
+			<h4>supprimer un utilisateurs</h4>
+			<form action="/dashboard" method="post" id="formUser">
+				<label for="delete">userEmail:</label>
+				<input type="text" name="userDelete" id="delete" required>
+
+				<input type="submit" name="delete5" value="delete" id="delete2">
+			</form>
+		</div>
+	</div>
+
+	<div class="user2">
+		<div class="update">
+			<h4>modifier l'email d'un utilisateurs</h4>
+			<form action="/dashboard" method="post" id="formUser">
+				<label for="update">userEmailSelect:</label>
+				<input type="text" name="userEmailSelect" id="update" required>
+
+				<label for="update">userEmailUpdate:</label>
+				<input type="text" name="userEmailUpdate" id="update" required>
+
+				<input type="submit" name="update11" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier le prénom d'un utilisateurs</h4>
+			<form action="/dashboard" method="post" id="formUser">
+				<label for="update">userEmailSelect:</label>
+				<input type="text" name="userEmailSelect" id="update" required>
+
+				<label for="update">userFirstNameUpdate:</label>
+				<input type="text" name="userFirstNameUpdate" id="update" required>
+
+				<input type="submit" name="update12" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier le nom d'un utilisateurs</h4>
+			<form action="/dashboard" method="post" id="formUser">
+				<label for="update">userEmailSelect:</label>
+				<input type="text" name="userEmailSelect" id="update" required>
+
+				<label for="update">userLastNameUpdate:</label>
+				<input type="text" name="userLastNameUpdate" id="update" required>
+
+				<input type="submit" name="update13" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier le mot de passe d'un utilisateurs</h4>
+			<form action="/dashboard" method="post" id="formUser">
+				<label for="update">userEmailSelect:</label>
+				<input type="text" name="userEmailSelect" id="update" required>
+
+				<label for="update">userPasswordUSerUpdate:</label>
+				<input type="text" name="userPasswordUSerUpdate" id="update" required>
+
+				<input type="submit" name="update14" value="update" id="update2">
+			</form>
+		</div>
+		<div class="update">
+			<h4>modifier le numéro de téléphone d'un utilisateurs</h4>
+			<form action="/dashboard" method="post" id="formUser">
+				<label for="update">userEmailSelect:</label>
+				<input type="text" name="userEmailSelect" id="update" required>
+
+				<label for="update">userPhoneNumberUpdate:</label>
+				<input type="text" name="userPhoneNumberUpdate" id="update" required>
+
+				<input type="submit" name="update15" value="update" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="user">
+		<div class="read3">
+			<h4>afficher tout les utilisateurs</h4>
+			{% for user in userDetails %}
+				<div class="readUser">
+					<p id="id">id:
+						{{user.id}}</p>
+					<p id="lastName">lastName :
+						{{user.lastName}}</p>
+					<p id="firstName">firstName:
+						{{user.firstName}}</p>
+					<p id="email">email:
+						{{user.email}}</p>
+					<p id="passwordUser">
+						password:
+						{{user.passwordUser}}</p>
+					<p id="phoneNumber">phoneNumber:
+						{{user.phoneNumber}}</p>
+					<p id="isAdmin">isAdmin:
+						{{user.isAdmin}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<h3>CRUD sur les notes et commentaires</h3>
+	<div class="notesComments">
+		<div class="add">
+			<h4>ajouter une notes et un commentaire</h4>
+			<form action="/dashboard" method="post" id="formNotesComments">
+				<label for="add">Content Notes:</label>
+				<input type="text" name="contentNotes" id="add" required>
+
+				<label for="add">Content Comments:</label>
+				<textarea name="contentComments" id="add" required></textarea>
+
+				<label for="add">Logements ID:</label>
+				<input type="text" name="id_logements" id="add" required>
+
+				<label for="add">User ID:</label>
+				<input type="text" name="id_user" id="add" required>
+
+				<input type="submit" name="submit700" value="Submit" id="submit2">
+			</form>
+		</div>
+		<div class="delete">
+			<h4>supprimer une notes et un commentaires</h4>
+			<form action="/dashboard" method="post" id="formNotesComments">
+				<label for="delete">Logements ID:</label>
+				<input type="text" name="id_logements" id="delete" required>
+
+				<label for="delete">User ID:</label>
+				<input type="text" name="id_user" id="delete" required>
+
+				<input type="submit" name="delete700" value="Submit" id="delete2">
+			</form>
+		</div>
+
+		<div class="update">
+			<h4>modifier la notes et le commentaires d'un logements</h4>
+			<form action="/dashboard" method="post" id="formNotesComments">
+				<label for="update">Content Notes update:</label>
+				<input type="text" name="contentNotes" id="update" required>
+
+				<label for="update">Content Comments update:</label>
+				<textarea name="contentComments" id="update" required></textarea>
+
+				<label for="update">Logements ID:</label>
+				<input type="text" name="id_logements" id="update" required>
+
+				<label for="update">User ID:</label>
+				<input type="text" name="id_user" id="update" required>
+
+				<input type="submit" name="update700" value="Submit" id="update2">
+			</form>
+		</div>
+	</div>
+
+	<div class="notesComments">
+		<div class="read4">
+			<h4>afficher tout les notes et commentaires</h4>
+			{% for notesComments in notesCommentsDetails %}
+				<div class="readNotesComments">
+					<p id="id">id:
+						{{notesComments.id}}</p>
+					<p id="contentNotes">contentNotes :
+						{{notesComments.contentNotes}}</p>
+					<p id="contentComments">contentComments:
+						{{notesComments.contentComments}}</p>
+					<p id="id_logements">id_logements:
+						{{notesComments.id_logements}}</p>
+					<p id="id_user">id_user:
+						{{notesComments.id_user}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

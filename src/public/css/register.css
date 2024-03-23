@@ -1,0 +1,16 @@
+#formRegister {
+    display: flex;
+    flex-direction: column;
+}
+
+#firstName, #lastName, #email, #phoneNumber, #submit, #passwordUser {
+    width: fit-content;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
+.button {
+    margin-bottom: 20px;
+}

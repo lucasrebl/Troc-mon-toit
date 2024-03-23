@@ -1,0 +1,83 @@
+{% extends "default.html.twig" %}
+
+{% block title %}profil
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="/../public/css/profil.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	<div class="button">
+		<button id="button">
+			<a href="/">home</a>
+		</button>
+		<button id="button">
+			<a href="/login">login</a>
+		</button>
+		<button id="button">
+			<a href="/register">register</a>
+		</button>
+		<form action="/" method="post" id="button2">
+			<input type="submit" name="logOut" value="Log Out" id="submit">
+		</form>
+	</div>
+
+	<h3>delete a logements to favorites</h3>
+	<form action="/favorites" method="post" id="formDeleteLogementToFavorites">
+		<label for="nameLogements">nameLogements:</label>
+		<input type="nameLogements" name="nameLogements" id="nameLogements" required>
+
+		<input type="submit" name="submit2" value="submit" id="submit">
+	</form>
+
+
+	<h3>information personnel de l'utilisateur</h3>
+	{% for user in userDetails %}
+		<div class="userInfo">
+			<p id="id">id:
+				{{user.id}}</p>
+			<p id="lastName">lastName:
+				{{user.lastName}}</p>
+			<p id="firstName">firstName:
+				{{user.firstName}}</p>
+			<p id="email">email:
+				{{user.email}}</p>
+			<p id="passwordUser">passwordUser;
+				{{user.passwordUser}}</p>
+			<p id="phoneNumber">phoneNumber:
+				{{user.phoneNumber}}</p>
+			<p id="isAdmin">isAdmin:{{user.isAdmin}}</p>
+		</div>
+	{% endfor %}
+
+	<h3>logements en favoris</h3>
+	{% for favorites in favoritesDetails %}
+		<div class="logementsFavoritesInfo">
+			<p id="id_logements">id_logements :{{favorites.id_logements}}</p>
+		</div>
+	{% endfor %}
+
+	<h3>booking info</h3>
+	{% for booking in bookingDetails %}
+		<div class="bookingInfo">
+			<p id="startDate">startDate :{{booking.startDate}}</p>
+			<p id="endDate">endDate:
+				{{booking.endDate}}</p>
+			<p id="id_logements">id_logements:
+				{{booking.id_logements}}</p>
+		</div>
+	{% endfor %}
+
+	<h3>notes et commantaires laissés par l'utilisateur</h3>
+	{% for notesComments in notesCommentsDetails %}
+		<div class="notesCommentsInfo">
+			<p id="contentNotes">contentNotes:
+				{{notesComments.contentNotes}}</p>
+			<p id="contentComments">contentComments:
+				{{notesComments.contentComments}}</p>
+			<p id="id_logements">id_logements:
+				{{notesComments.id_logements}}</p>
+		</div>
+	{% endfor %}
+{% endblock %}

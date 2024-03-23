@@ -1,0 +1,69 @@
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+#button {
+    margin-left: 20px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+.fav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+#formAddLogementToFavorites {
+    display: flex;
+    flex-direction: column;
+    margin-left: 43%;
+}
+
+#nameLogements,
+#submit {
+    width: fit-content;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.logements {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+#image {
+    height: 50px;
+}
+
+.services, .equipements, .housingType {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.bookingInfo, .notesCommentsInfo {
+    display: flex;
+    justify-content: center;
+}
+
+#startDate, #endDate, #contentComments, #contentNotes {
+    margin-right: 30px;
+}

@@ -1,0 +1,86 @@
+{% extends "default.html.twig" %}
+
+{% block title %}logements
+{% endblock %}
+{% block stylesheets %}
+	<link href="/../public/css/logements.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+	<div class="button">
+		<button id="button">
+			<a href="/">home</a>
+		</button>
+		<button id="button">
+			<a href="/profil">profil</a>
+		</button>
+		<button id="button">
+			<a href="/reservation">reserver un logements</a>
+		</button>
+	</div>
+
+	<h3>ajouter un logements a vos favoris</h3>
+	<div class="fav">
+		<form action="/favorites" method="post" id="formAddLogementToFavorites">
+			<label for="nameLogements">nameLogements:</label>
+			<input type="nameLogements" name="nameLogements" id="nameLogements" required>
+
+			<input type="submit" name="submit" value="submit" id="submit">
+		</form>
+	</fav>
+
+	<h3>description du logements</h3>
+	{% for logements in logementsDetails %}
+		<div class="logements">
+			<p>id:
+				{{logements.id}}</p>
+			<p>prix:
+				{{logements.price}}€</p>
+			<p>ville:
+				{{logements.city}}</p>
+			<p>nom:
+				{{logements.name}}</p>
+			<img id="image" src="data:image;base64,{{ logements.image }}" alt="Image">
+		</div>
+	{% endfor %}
+
+	{% for services in servicesDetails %}
+		<div class="services">
+			<p>nom des services:
+				{{services.nameServices}}</p>
+		</div>
+	{% endfor %}
+
+	{% for equipements in equipementsDetails %}
+		<div class="equipements">
+			<p>nom des équipements:
+				{{equipements.nameEquipements}}</p>
+		</div>
+	{% endfor %}
+
+	{% for logementsType in logementsTypeDetails %}
+		<div class="housingType">
+			<p>nom du type de logements:
+				{{logementsType.nameLogementsType}}</p>
+		</div>
+	{% endfor %}
+
+	<h3>le logements est deja reserver sur les périodes suivants</h3>
+	{% for booking in bookingDetails %}
+		<div class="bookingInfo">
+			<p id="startDate">startDate:
+				{{booking.startDate}}</p>
+			<p id="endDate">endDate:
+				{{booking.endDate}}</p>
+		</div>
+	{% endfor %}
+
+	<h3>notes et commantaires laissés par les utilisateur</h3>
+	{% for notesComments in notesCommentsDetails %}
+		<div class="notesCommentsInfo">
+			<p id="contentNotes">contentNotes:
+				{{notesComments.contentNotes}}</p>
+			<p id="contentComments">contentComments:
+				{{notesComments.contentComments}}</p>
+		</div>
+	{% endfor %}
+{% endblock %}

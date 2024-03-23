@@ -1,0 +1,16 @@
+#formLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+#email, #submit, #passwordUser {
+    width: fit-content;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
+#button {
+    margin-bottom: 20px;
+}

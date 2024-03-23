@@ -1,0 +1,39 @@
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+#button {
+    margin-left: 20px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#formReservLogement {
+    display: flex;
+    flex-direction: column;
+    margin-left: 45%;
+}
+
+#name,
+#startDate,
+#endDate,
+#submit {
+    width: fit-content;
+}
+
+.bookingInfo {
+    display: flex;
+    justify-content: center;
+}
+
+#startDate, #endDate, #id_logements {
+    margin-right: 20px;
+}

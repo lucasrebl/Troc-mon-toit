@@ -1,0 +1,25 @@
+{% extends "default.html.twig" %}
+
+{% block title %}login
+{% endblock %}
+{% block stylesheets %}
+	<link href="/../public/css/login.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+	<h1>page login</h1>
+	<button id="button">
+		<a href="/register">regsister</a>
+	</button>
+	<button id="button">
+		<a href="/">home</a>
+	</button>
+	<form action="/login" method="post" id="formLogin">
+		<label for="email">email:</label>
+		<input type="text" name="email" id="email" required>
+
+		<label for="passwordUser">password:</label>
+		<input type="password" name="passwordUser" id="passwordUser" required>
+
+		<input type="submit" name="submit" value="submit" id="submit">
+	</form>
+{% endblock %}

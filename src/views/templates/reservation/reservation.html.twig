@@ -1,0 +1,43 @@
+{% extends "default.html.twig" %}
+
+{% block title %}reservation
+{% endblock %}
+{% block stylesheets %}
+	<link href="/../public/css/reservation.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+	<div class="button">
+		<button id="button">
+			<a href="/">home</a>
+		</button>
+		<button id="button">
+			<a href="/profil">profil</a>
+		</button>
+	</div>
+
+	<h3>form add logements</h3>
+	<form action="/reservation" method="post" id="formReservLogement">
+		<label for="name">nameLogements:</label>
+		<input type="name" name="name" id="name" required>
+
+		<label for="startDate">startDate:</label>
+		<input type="date" name="startDate" id="startDate" required>
+
+		<label for="endDate">endDate :</label>
+		<input type="date" name="endDate" id="endDate" required>
+
+		<input type="submit" name="submit" value="submit" id="submit">
+	</form>
+
+	<h3>booking info</h3>
+	{% for booking in bookingDetails %}
+		<div class="bookingInfo">
+			<p id="startDate">startDate :{{booking.startDate}}</p>
+			<p id="endDate">endDate:
+				{{booking.endDate}}</p>
+			<p id="id_logements">id_logements:
+				{{booking.id_logements}}</p>
+		</div>
+	{% endfor %}
+
+{% endblock %}

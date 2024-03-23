@@ -1,0 +1,79 @@
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+#button {
+    margin-left: 20px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+#button2 {
+    margin-left: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.fav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+#formDeleteLogementToFavorites {
+    display: flex;
+    flex-direction: column;
+    margin-left: 43%;
+}
+
+#nameLogements,
+#submit {
+    width: fit-content;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.userInfo, .logementsFavoritesInfo, .bookingInfo {
+    margin-top: 20px;
+    margin-left: 43%;
+}
+
+#formUpdateUserEmail,
+#formUpdateUserFirstName,
+#formUpdateUserLastName,
+#formUpdateUserPassword,
+#formUpdateUserPhoneNumber {
+    display: flex;
+    flex-direction: column;
+    margin-left: 43%;
+}
+
+#userEmailSelect,
+#userEmailUpdate,
+#userFirstNameUpdate,
+#userLastNameUpdate,
+#userPasswordUSerUpdate,
+#userPhoneNumberUpdate,
+#update {
+    width: fit-content;
+}
+
+#id_logements, #startDate, #endDate, #contentNotes, #contentComments, #id_logements {
+    margin-left: 30px;
+}
+
+.bookingInfo, .notesCommentsInfo{
+    display: flex;
+    margin-left: 30%;
+}
