@@ -28,7 +28,7 @@ Ce projet est un site qui permet de réserver des logements
         - docker-compose.yaml
         - .htaccess
     
-      https://github.com/lucasrebl/template-Login_Register_Header/releases
+      https://github.com/lucasrebl/Troc-mon-toit/releases/tag/file
 
       Attention le fichier .htaccess est nommé 'default.htaccess',
       une fois télécharger renommé le juste '.htaccess' sinon cela ne fonctionnera pas.
@@ -49,9 +49,8 @@ Ce projet est un site qui permet de réserver des logements
   - Cinquième étape: dans le dossier src placé le fichier .htaccess télécharger précédemment 
     
   - Sixième étape: Aller sur ce lien pour voir le site
-    ```bash
+    
     http://localhost:8080/
-    ```
 
 # Contributor
 
